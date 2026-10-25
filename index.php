@@ -76,7 +76,7 @@ $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS
                         <td class="operator"><?= $operator ?></td>
                         <td class="operand"><?= $b ?></td>
                         <td class="equal">=</td>
-                        <td class="answer"> $answer</td>
+                        <td class="answer"><?=$answer?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
