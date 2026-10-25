@@ -16,8 +16,7 @@ $showResults = true;
 </head>
 
 <body>
-    <h1>Math Test</h1>
-    <h2>Name:</h2>
+    <h1>Test Results</h1>
     <?php require "quiz_table.php"; ?>
 </body>
 </html>
