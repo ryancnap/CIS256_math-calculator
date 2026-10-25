@@ -1,19 +1,10 @@
-
-
-// New requirements:
-// keep track of correct answers
-// replace blank with number input field
-// check input field against correct answer
-
-// create new page that displays the same test but with the number fields replaced by:
-// 1. The answer
-// 2. Correct/incorrect
-// 3. For incorrect label, display Incorrect. The correct answer is _
+<?php
+require "config.php";
+session_start();
 
 // At the bottom of the new page, display percentage correct
 // At the bottom of the new page, display a link allowing users to complete a new test
 
-session_start();
 // Generate x pairs of random numbers with operator-based logic and add to array of all questions.
 // Constraints: a - b >= minimum result, a + b <= maximum result, minimum result >= 0.
 foreach (range(1, NUMBER_PAIRS) as $questionNumber) {
@@ -47,14 +38,14 @@ $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS
 <html lang="en">
 <head>
     <title>CIS 256 - Math Test project</title>
-
+    <?php require "styles.php"; ?>
 </head>
 
 <body>
     <h1>Math Test</h1>
     <h2>Name:</h2>
     <form method="post" action="results.php">
-
+        <?php $showResults = false; require "quiz_table.php"; ?>
         <button type="submit">Submit</button>
     </form>
 </body>
