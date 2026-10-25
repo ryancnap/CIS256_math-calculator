@@ -4,6 +4,19 @@ define('MAXIMUM_RESULT', 10);
 define('NUMBER_PAIRS', 20);
 define('NUMBER_COLUMNS', 2);
 
+// New requirements:
+// keep track of correct answers
+// replace blank with number input field
+// check input field against correct answer
+
+// create new page that displays the same test but with the number fields replaced by:
+// 1. The answer
+// 2. Correct/incorrect
+// 3. For incorrect label, display Incorrect. The correct answer is _
+
+// At the bottom of the new page, display percentage correct
+// At the bottom of the new page, display a link allowing users to complete a new test
+
 // Generate x pairs of random numbers with operator-based logic and add to array of all questions.
 // Constraints: a - b >= minimum result, a + b <= maximum result, minimum result >= 0.
 foreach (range(1, NUMBER_PAIRS) as $questionNumber) {
@@ -15,6 +28,7 @@ foreach (range(1, NUMBER_PAIRS) as $questionNumber) {
         $a = rand(MINIMUM_RESULT, $result);
         $b = $result - $a;
         $pair = [$a, $b];
+        $answer = $a + $b;
         shuffle($pair);
     }
     else
@@ -22,9 +36,10 @@ foreach (range(1, NUMBER_PAIRS) as $questionNumber) {
         $a = rand(MINIMUM_RESULT, MAXIMUM_RESULT);
         $b = rand(MINIMUM_RESULT, $a);
         $pair = [$a, $b];
+        $answer = $a - $b;
     }
 
-    $questions[] = [$questionNumber, $pair[0], $operator, $pair[1]];
+    $questions[] = [$questionNumber, $pair[0], $operator, $pair[1], $answer];
 }
 
 // Format list of questions into x columns
@@ -44,7 +59,7 @@ $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS
         .quiz .number {width: 2.5em;}
         .quiz .operand {width: 1.5em;}
         .quiz .operator, .quiz .equal {width: 1em; text-align: center;}
-        .quiz .blank {width: 10em; border-bottom: 1px solid black; text-align: left;}
+        .quiz .answer {width: 10em; border-bottom: 1px solid black; text-align: left;}
     </style>
 </head>
 
@@ -54,14 +69,14 @@ $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS
     <div class = "quiz">
         <?php foreach ($columns as $column): ?>
             <table>
-                <?php foreach ($column as [$questionNumber, $a, $operator, $b]): ?>
+                <?php foreach ($column as [$questionNumber, $a, $operator, $b, $answer]): ?>
                     <tr>
                         <td class="number"><?= $questionNumber ?>)</td>
                         <td class="operand"><?= $a ?></td>
                         <td class="operator"><?= $operator ?></td>
                         <td class="operand"><?= $b ?></td>
                         <td class="equal">=</td>
-                        <td class="blank"></td>
+                        <td class="answer"> $answer</td>
                     </tr>
                 <?php endforeach; ?>
             </table>
