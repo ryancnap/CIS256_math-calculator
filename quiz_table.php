@@ -1,6 +1,6 @@
 <?php
+// Reorganize questions into even columns for display purposes only.
 $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS));
-
 ?>
 <div class = "quiz">
     <?php foreach ($columns as $column): ?>
