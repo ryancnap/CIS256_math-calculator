@@ -67,23 +67,27 @@ $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS
 <body>
     <h1>Math Test</h1>
     <h2>Name:</h2>
-    <div class = "quiz">
-        <?php foreach ($columns as $column): ?>
-            <table>
-                <?php foreach ($column as [$questionNumber, $a, $operator, $b, $answer]): ?>
-                    <tr>
-                        <td class="number"><?= $questionNumber ?>)</td>
-                        <td class="operand"><?= $a ?></td>
-                        <td class="operator"><?= $operator ?></td>
-                        <td class="operand"><?= $b ?></td>
-                        <td class="equal">=</td>
-                        <td class="answer">
-                            <input type="number" name="answer[<?= $questionNumber ?>]">
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-        <?php endforeach; ?>
-    </div>
+    <form method="post" action="results.php">
+        <div class = "quiz">
+            <?php foreach ($columns as $column): ?>
+                <table>
+                    <?php foreach ($column as [$questionNumber, $a, $operator, $b, $answer]): ?>
+                        <tr>
+                            <td class="number"><?= $questionNumber ?>)</td>
+                            <td class="operand"><?= $a ?></td>
+                            <td class="operator"><?= $operator ?></td>
+                            <td class="operand"><?= $b ?></td>
+                            <td class="equal">=</td>
+                            <td class="answer">
+                                <!-- Following will build $_POST['guess'] as an array keyed by question number-->
+                                <input type="number" name="guess[<?= $questionNumber ?>]">
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endforeach; ?>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
