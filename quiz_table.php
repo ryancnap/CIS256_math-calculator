@@ -14,7 +14,7 @@
                             $guess = $guesses[$questionNumber] ?? '';
                             $isCorrect = $guess !== '' && (int) $guess === $answer;
                         ?>
-                        <td class="answer"><?= $answer ?></td>
+                        <td class="answer"><?= $guess ?></td>
                         <td class="feedback">
                             <?= $isCorrect ? "Correct!" : "Incorrect. The answer is $answer." ?>
                         </td>
