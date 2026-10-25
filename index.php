@@ -2,9 +2,6 @@
 require "config.php";
 session_start();
 
-// At the bottom of the new page, display percentage correct
-// At the bottom of the new page, display a link allowing users to complete a new test
-
 // Generate x pairs of random numbers with operator-based logic and add to array of all questions.
 // Constraints: a - b >= minimum result, a + b <= maximum result, minimum result >= 0.
 foreach (range(1, NUMBER_PAIRS) as $questionNumber) {
@@ -30,8 +27,8 @@ foreach (range(1, NUMBER_PAIRS) as $questionNumber) {
     $questions[] = [$questionNumber, $pair[0], $operator, $pair[1], $answer];
 }
 
+// Store questions arreayin session variable for later
 $_SESSION['questions'] = $questions;
-$columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS));
 ?>
 
 <!DOCTYPE html>

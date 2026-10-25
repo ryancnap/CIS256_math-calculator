@@ -5,7 +5,6 @@ session_start();
 // Reuse questions from index.php
 $questions = $_SESSION['questions'];
 $guesses = $_POST['guesses'] ?? [];
-$columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS));
 $showResults = true;
 ?>
 

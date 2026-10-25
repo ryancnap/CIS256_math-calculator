@@ -1,4 +1,7 @@
-<!-- Feature flag to display either results version of form or question version of form. -->
+<?php
+$columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS));
+
+?>
 <div class = "quiz">
     <?php foreach ($columns as $column): ?>
         <table>
