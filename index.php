@@ -27,7 +27,7 @@ foreach (range(1, NUMBER_PAIRS) as $questionNumber) {
     $questions[] = [$questionNumber, $pair[0], $operator, $pair[1], $answer];
 }
 
-// Store questions arreayin session variable for later
+// Store questions array in session variable for later
 $_SESSION['questions'] = $questions;
 ?>
 

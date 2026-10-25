@@ -2,7 +2,7 @@
 // Reorganize questions into even columns for display purposes only.
 $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS));
 ?>
-<div class = "quiz">
+<div class="quiz">
     <?php foreach ($columns as $column): ?>
         <table>
             <?php foreach ($column as [$questionNumber, $a, $operator, $b, $answer]): ?>
@@ -23,7 +23,6 @@ $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS
                         </td>
                     <?php else: ?>
                         <td class="answer">
-                            <!-- Following will build $_POST['guesses'] as an array keyed by question number, with the value as the guess input -->
                             <input type="number" name="guesses[<?= $questionNumber ?>]">
                         </td>
                     <?php endif; ?>

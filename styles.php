@@ -8,4 +8,6 @@
     .quiz .operand {width: 1.5em;}
     .quiz .operator, .quiz .equal {width: 1em; text-align: center;}
     .quiz .answer {width: 10em; border-bottom: 1px solid black; text-align: left;}
+    .quiz .answer input {width: 100%; box-sizing: border-box; border: none; font: inherit;}
+    .quiz .feedback {text-align: left;}
 </style>

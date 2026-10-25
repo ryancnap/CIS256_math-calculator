@@ -10,11 +10,11 @@ $results = [];
 foreach ($questions as [$questionNumber, $a, $operator, $b, $answer])
 {
     $guess = $guesses[$questionNumber] ?? '';
-    $results[$questionNumber] = $guess !== '' && $guess === $answer;
+    $results[$questionNumber] = $guess !== '' && (int) $guess === $answer;
 }
 
 $correct = count(array_filter($results));
-$percentCorrect = round($correct / count($questions) * 100);
+$percentCorrect = round($correct / NUMBER_PAIRS * 100);
 
 $showResults = true;
 
@@ -30,8 +30,10 @@ $showResults = true;
 <body>
     <h1>Test Results</h1>
     <?php require "quiz_table.php"; ?>
-    <p>You got <?php echo $correct; ?> out of <?php echo count($questions); ?> questions correct.</p>
-    <p>Your score is <?= $correct?> of <?=count($questions)?></p>
+    <br/>
+    <p>You got <?= $correct; ?> out of <?= NUMBER_PAIRS; ?> questions correct.</p>
     <p>Your score is <?= $percentCorrect?>%</p>
+    <br/>
+    <a href="index.php">Complete another test.</a>
 </body>
 </html>
