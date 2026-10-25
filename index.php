@@ -79,8 +79,8 @@ $columns = array_chunk($questions, (int) ceil(count($questions) / NUMBER_COLUMNS
                             <td class="operand"><?= $b ?></td>
                             <td class="equal">=</td>
                             <td class="answer">
-                                <!-- Following will build $_POST['guess'] as an array keyed by question number-->
-                                <input type="number" name="guess[<?= $questionNumber ?>]">
+                                <!-- Following will build $_POST['guesses'] as an array keyed by question number, with the value as the guess input -->
+                                <input type="number" name="guesses[<?= $questionNumber ?>]">
                             </td>
                         </tr>
                     <?php endforeach; ?>
